@@ -12,10 +12,10 @@ License:	GPL
 Group:		Development/Languages
 Source0:	ftp://gcc.gnu.org/pub/gcc/releases/gcc-%{version}/gcc-%{version}.tar.bz2
 # Source0-md5:	2fada3a3effd2fd791df09df1f1534b3
+BuildRequires:	autoconf
+BuildRequires:	bison
 BuildRequires:	crosssparc-binutils
 BuildRequires:	flex
-BuildRequires:	bison
-BuildRequires:	autoconf
 BuildRequires:	/bin/bash
 Requires:	crosssparc-binutils
 Requires:	gcc-dirs
@@ -86,9 +86,9 @@ rm -rf $RPM_BUILD_ROOT
 # don't want this here
 rm -f $RPM_BUILD_ROOT%{_libdir}/libiberty.a
 
-%{target}-strip -g $RPM_BUILD_ROOT%{gcclib}/libgcov.a
 %if 0%{!?debug:1}
 %{target}-strip -g $RPM_BUILD_ROOT%{gcclib}/libgcc.a
+%{target}-strip -g $RPM_BUILD_ROOT%{gcclib}/libgcov.a
 %endif
 
 %clean

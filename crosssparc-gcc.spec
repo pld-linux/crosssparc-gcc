@@ -5,7 +5,7 @@ Summary(pl):	Skro¶ne narzêdzia programistyczne GNU dla SPARC - gcc
 Summary(pt_BR):	Utilitários para desenvolvimento de binários da GNU - SPARC gcc
 Summary(tr):	GNU geliþtirme araçlarý - SPARC gcc
 Name:		crosssparc-gcc
-Version:	3.3.4
+Version:	3.4.2
 Release:	1
 Epoch:		1
 License:	GPL
@@ -23,10 +23,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		target		sparc-pld-linux
 %define		arch		%{_prefix}/%{target}
-%define		gccarch		%{_libdir}/gcc-lib/%{target}
-%define		gcclib		%{_libdir}/gcc-lib/%{target}/%{version}
+%define		gccarch		%{_libdir}/gcc/%{target}
+%define		gcclib		%{gccarch}/%{version}
 
-%define		_noautostrip	.*%{gcclib}/libgcc\\.a
+%define		_noautostrip	.*%{gcclib}/libgc.*\\.a
 
 %description
 This package contains a cross-gcc which allows the creation of
@@ -85,6 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 # don't want this here
 rm -f $RPM_BUILD_ROOT%{_libdir}/libiberty.a
 
+%{target}-strip -g $RPM_BUILD_ROOT%{gcclib}/libgcov.a
 %if 0%{!?debug:1}
 %{target}-strip -g $RPM_BUILD_ROOT%{gcclib}/libgcc.a
 %endif

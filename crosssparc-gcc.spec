@@ -33,15 +33,16 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 This package contains a cross-gcc which allows the creation of
 binaries to be run on SPARC linux (architecture sparc-linux) on
-i386-machines.
+other machines.
 
 %description -l de
 Dieses Paket enthält einen Cross-gcc, der es erlaubt, auf einem
-i386-Rechner Code für sparc-Linux zu generieren.
+anderem Rechner Code für sparc-Linux zu generieren.
 
 %description -l pl
-Ten pakiet zawiera skro¶ny gcc pozwalaj±cy na robienie na maszynach
-i386 binariów do uruchamiania na SPARC (architektura "sparc-linux").
+Ten pakiet zawiera skro¶ny gcc pozwalaj±cy na robienie na innych
+maszynach binariów do uruchamiania na SPARC (architektura
+"sparc-linux").
 
 %prep
 %setup -q -n gcc-%{version}
@@ -54,7 +55,8 @@ cd obj-%{target}
 
 CFLAGS="%{rpmcflags}" \
 CXXFLAGS="%{rpmcflags}" \
-TEXCONFIG=false ../configure \
+TEXCONFIG=false \
+../configure \
 	--prefix=%{_prefix} \
 	--infodir=%{_infodir} \
 	--mandir=%{_mandir} \
@@ -62,10 +64,7 @@ TEXCONFIG=false ../configure \
 	--libdir=%{_libdir} \
 	--libexecdir=%{_libdir} \
 	--disable-shared \
-	--enable-haifa \
 	--enable-languages="c" \
-	--enable-long-long \
-	--enable-namespaces \
 	--with-gnu-as \
 	--with-gnu-ld \
 	--with-system-zlib \
@@ -73,12 +72,7 @@ TEXCONFIG=false ../configure \
 	--without-x \
 	--target=%{target}
 
-PATH=$PATH:/sbin:%{_sbindir}
-
-cd ..
-#LDFLAGS_FOR_TARGET="%{rpmldflags}"
-
-%{__make} -C obj-%{target}
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT

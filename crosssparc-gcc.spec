@@ -49,6 +49,7 @@ maszynach binariów do uruchamiania na SPARC (architektura
 %setup -q -n gcc-%{version}
 
 %build
+cp -f /usr/share/automake/config.* .
 rm -rf obj-%{target}
 install -d obj-%{target}
 cd obj-%{target}

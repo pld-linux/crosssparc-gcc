@@ -1,0 +1,11 @@
+--- gcc-3.4.0/configure.in.orig	2004-03-01 20:27:33.000000000 +0100
++++ gcc-3.4.0/configure.in	2004-05-22 12:52:40.933079088 +0200
+@@ -1946,7 +1946,7 @@
+ # being built; programs in there won't even run.
+ if test "${build}" = "${host}" && test -d ${srcdir}/gcc; then
+   # Search for pre-installed headers if nothing else fits.
+-  FLAGS_FOR_TARGET=$FLAGS_FOR_TARGET' -B$(build_tooldir)/bin/ -B$(build_tooldir)/lib/ -isystem $(build_tooldir)/include -isystem $(build_tooldir)/sys-include'
++  FLAGS_FOR_TARGET=$FLAGS_FOR_TARGET' -B$(build_tooldir)/bin/ -B$(build_tooldir)/lib/ -isystem $(build_tooldir)/include -isystem $(build_tooldir)/sys-include -isystem /usr/include'
+ fi
+ 
+ if test "x${use_gnu_ld}" = x &&

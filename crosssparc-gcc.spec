@@ -18,6 +18,7 @@ BuildRequires:	bison
 BuildRequires:	autoconf
 BuildRequires:	/bin/bash
 Requires:	crosssparc-binutils
+Requires:	gcc-dirs
 ExcludeArch:	sparc sparcv9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 

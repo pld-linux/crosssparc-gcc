@@ -28,6 +28,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		gccarch		%{_prefix}/lib/gcc-lib/%{target}
 %define		gcclib		%{_prefix}/lib/gcc-lib/%{target}/%{version}
 
+%define		_noautostrip	.*libgcc\\.a
+
 %description
 This package contains a cross-gcc which allows the creation of
 binaries to be run on SPARC linux (architecture sparc-linux) on

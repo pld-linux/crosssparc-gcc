@@ -5,14 +5,13 @@ Summary(pl):	Skro¶ne narzêdzia programistyczne GNU dla SPARC - gcc
 Summary(pt_BR):	Utilitários para desenvolvimento de binários da GNU - SPARC gcc
 Summary(tr):	GNU geliþtirme araçlarý - SPARC gcc
 Name:		crosssparc-gcc
-Version:	3.3.3
+Version:	3.3.4
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
 Source0:	ftp://gcc.gnu.org/pub/gcc/releases/gcc-%{version}/gcc-%{version}.tar.bz2
-# Source0-md5:	3c6cfd9fcd180481063b4058cf6faff2
-Patch1:		crosssparc64-gcc-3.3.3-include-fix.patch
+# Source0-md5:	a1c267b34f05c8660b24251865614d8b
 BuildRequires:	crosssparc-binutils
 BuildRequires:	flex
 BuildRequires:	bison
@@ -22,13 +21,12 @@ Requires:	crosssparc-binutils
 ExcludeArch:	sparc sparcv9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		cxx		0
 %define		target		sparc-pld-linux
 %define		arch		%{_prefix}/%{target}
 %define		gccarch		%{_libdir}/gcc-lib/%{target}
 %define		gcclib		%{_libdir}/gcc-lib/%{target}/%{version}
 
-%define		_noautostrip	.*libgcc\\.a
+%define		_noautostrip	.*%{gcclib}/libgcc\\.a
 
 %description
 This package contains a cross-gcc which allows the creation of
@@ -46,7 +44,6 @@ maszynach binariów do uruchamiania na SPARC (architektura
 
 %prep
 %setup -q -n gcc-%{version}
-%patch1 -p1
 
 %build
 rm -rf obj-%{target}
@@ -64,11 +61,14 @@ TEXCONFIG=false \
 	--libdir=%{_libdir} \
 	--libexecdir=%{_libdir} \
 	--disable-shared \
+	--disable-threads \
 	--enable-languages="c" \
 	--with-gnu-as \
 	--with-gnu-ld \
 	--with-system-zlib \
 	--with-multilib \
+	--with-newlib \
+	--without-headers \
 	--without-x \
 	--target=%{target}
 
@@ -76,59 +76,32 @@ TEXCONFIG=false \
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_datadir},%{_bindir},%{gcclib}}
 
-cd obj-%{target}
-PATH=$PATH:/sbin:%{_sbindir}
-
-%{__make} -C gcc install \
-	prefix=%{_prefix} \
-	mandir=%{_mandir} \
-	infodir=%{_infodir} \
-	gxx_include_dir=$RPM_BUILD_ROOT%{arch}/include/g++ \
+%{__make} -C obj-%{target} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-# c++filt is provided by binutils
-#rm -f $RPM_BUILD_ROOT%{_bindir}/i386-mipsel-c++filt
-
-# what is this there for???
+# don't want this here
 rm -f $RPM_BUILD_ROOT%{_libdir}/libiberty.a
 
-# the same... make hardlink
-#ln -f $RPM_BUILD_ROOT%{arch}/bin/gcc $RPM_BUILD_ROOT%{_bindir}/%{target}-gcc
-
+%if 0%{!?debug:1}
 %{target}-strip -g $RPM_BUILD_ROOT%{gcclib}/libgcc.a
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/%{target}-gcc
+%attr(755,root,root) %{_bindir}/%{target}-gcc*
+%attr(755,root,root) %{_bindir}/%{target}-gcov
 %attr(755,root,root) %{_bindir}/%{target}-cpp
-#%dir %{arch}/bin
-#%attr(755,root,root) %{arch}/bin/cpp
-#%attr(755,root,root) %{arch}/bin/gcc
-#%attr(755,root,root) %{arch}/bin/gcov
-#%%{arch}/include/_G_config.h
 %dir %{gccarch}
 %dir %{gcclib}
 %attr(755,root,root) %{gcclib}/cc1
-##%attr(755,root,root) %{gcclib}/tradcpp0
-##%attr(755,root,root) %{gcclib}/cpp0
 %attr(755,root,root) %{gcclib}/collect2
-#%%{gcclib}/SYSCALLS.c.X
+%{gcclib}/crt*.o
 %{gcclib}/libgcc.a
 %{gcclib}/specs*
 %dir %{gcclib}/include
 %{gcclib}/include/*.h
-#%%{gcclib}/include/iso646.h
-#%%{gcclib}/include/limits.h
-#%%{gcclib}/include/proto.h
-#%%{gcclib}/include/stdarg.h
-#%%{gcclib}/include/stdbool.h
-#%%{gcclib}/include/stddef.h
-#%%{gcclib}/include/syslimits.h
-#%%{gcclib}/include/varargs.h
-#%%{gcclib}/include/va-*.h
 %{_mandir}/man1/%{target}-gcc.1*

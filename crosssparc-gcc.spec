@@ -54,7 +54,7 @@ rm -rf obj-%{target}
 install -d obj-%{target}
 cd obj-%{target}
 
-CFLAGS="%{rpmcflags}" \
+CFLAGS="%{rpmcflags} -isystem %{_includedir}" \
 CXXFLAGS="%{rpmcflags}" \
 TEXCONFIG=false ../configure \
 	--prefix=%{_prefix} \

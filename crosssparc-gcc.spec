@@ -13,7 +13,6 @@ Group:		Development/Languages
 Source0:	ftp://gcc.gnu.org/pub/gcc/releases/gcc-%{version}/gcc-%{version}.tar.bz2
 # Source0-md5:	85c6fc83d51be0fbb4f8205accbaff59
 Patch1:		crosssparc-gcc-3.4.0-include-fix.patch
-Patch2:		crosssparc-gcc-threads.patch
 BuildRequires:	crosssparc-binutils
 BuildRequires:	flex
 BuildRequires:	bison
@@ -47,14 +46,13 @@ i386 binariów do uruchamiania na SPARC (architektura "sparc-linux").
 %prep
 %setup -q -n gcc-%{version}
 %patch1 -p1
-%patch2 -p1
 
 %build
 rm -rf obj-%{target}
 install -d obj-%{target}
 cd obj-%{target}
 
-CFLAGS="%{rpmcflags} -isystem %{_includedir}" \
+CFLAGS="%{rpmcflags}" \
 CXXFLAGS="%{rpmcflags}" \
 TEXCONFIG=false ../configure \
 	--prefix=%{_prefix} \

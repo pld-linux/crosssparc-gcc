@@ -27,7 +27,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		gccarch		%{_libdir}/gcc/%{target}
 %define		gcclib		%{gccarch}/%{version}
 
-%define		_noautostrip	.*%{gcclib}/libgc.*\\.a
+%define		_noautostrip	.*%{gcclib}.*/libgc.*\\.a
 
 %description
 This package contains a cross-gcc which allows the creation of
@@ -74,12 +74,12 @@ TEXCONFIG=false \
 	--host=%{_target_platform} \
 	--build=%{_target_platform}
 
-%{__make}
+%{__make} all-gcc
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} -C obj-%{target} install \
+%{__make} -C obj-%{target} install-gcc \
 	DESTDIR=$RPM_BUILD_ROOT
 
 # don't want this here
@@ -95,9 +95,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/%{target}-gcc*
-%attr(755,root,root) %{_bindir}/%{target}-gcov
 %attr(755,root,root) %{_bindir}/%{target}-cpp
+%attr(755,root,root) %{_bindir}/%{target}-gcc
 %dir %{gccarch}
 %dir %{gcclib}
 %attr(755,root,root) %{gcclib}/cc1
@@ -107,4 +106,5 @@ rm -rf $RPM_BUILD_ROOT
 %{gcclib}/specs*
 %dir %{gcclib}/include
 %{gcclib}/include/*.h
+%{_mandir}/man1/%{target}-cpp.1*
 %{_mandir}/man1/%{target}-gcc.1*

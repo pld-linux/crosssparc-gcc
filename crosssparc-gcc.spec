@@ -11,7 +11,7 @@ Epoch:		1
 License:	GPL
 Group:		Development/Languages
 Source0:	ftp://gcc.gnu.org/pub/gcc/releases/gcc-%{version}/gcc-%{version}.tar.bz2
-# Source0-md5:	a1c267b34f05c8660b24251865614d8b
+# Source0-md5:	2fada3a3effd2fd791df09df1f1534b3
 BuildRequires:	crosssparc-binutils
 BuildRequires:	flex
 BuildRequires:	bison

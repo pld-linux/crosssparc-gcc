@@ -70,7 +70,9 @@ TEXCONFIG=false \
 	--with-newlib \
 	--without-headers \
 	--without-x \
-	--target=%{target}
+	--target=%{target} \
+	--host=%{_target_platform} \
+	--build=%{_target_platform}
 
 %{__make}
 

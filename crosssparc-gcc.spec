@@ -6,7 +6,7 @@ Summary(pt_BR):	Utilitários para desenvolvimento de binários da GNU - SPARC gcc
 Summary(tr):	GNU geliþtirme araçlarý - SPARC gcc
 Name:		crosssparc-gcc
 Version:	3.3.5
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Development/Languages

@@ -5,13 +5,13 @@ Summary(pl):	Skro¶ne narzêdzia programistyczne GNU dla SPARC - gcc
 Summary(pt_BR):	Utilitários para desenvolvimento de binários da GNU - SPARC gcc
 Summary(tr):	GNU geliþtirme araçlarý - SPARC gcc
 Name:		crosssparc-gcc
-Version:	3.4.2
+Version:	3.4.3
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
 Source0:	ftp://gcc.gnu.org/pub/gcc/releases/gcc-%{version}/gcc-%{version}.tar.bz2
-# Source0-md5:	2fada3a3effd2fd791df09df1f1534b3
+# Source0-md5:	e744b30c834360fccac41eb7269a3011
 BuildRequires:	autoconf
 BuildRequires:	bison
 BuildRequires:	crosssparc-binutils

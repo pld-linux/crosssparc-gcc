@@ -13,7 +13,7 @@ License:	GPL
 Group:		Development/Languages
 #Source0:	ftp://gcc.gnu.org/pub/gcc/releases/gcc-%{version}/gcc-%{version}.tar.bz2
 Source0:	ftp://gcc.gnu.org/pub/gcc/snapshots/4.0-%{_snap}/gcc-4.0-%{_snap}.tar.bz2
-# Source0-md5:	e744b30c834360fccac41eb7269a3011
+# Source0-md5:	25e147473b14c4bb43cdc53299c3524c
 Patch0:		gcc-pr21454.patch
 URL:		http://gcc.gnu.org/
 BuildRequires:	autoconf

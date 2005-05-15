@@ -33,17 +33,15 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This package contains a cross-gcc which allows the creation of
-binaries to be run on SPARC linux (architecture sparc-linux) on
-other machines.
+binaries to be run on SPARC Linux on other machines.
 
 %description -l de
 Dieses Paket enthält einen Cross-gcc, der es erlaubt, auf einem
-anderem Rechner Code für sparc-Linux zu generieren.
+anderem Rechner Code für SPARC Linux zu generieren.
 
 %description -l pl
 Ten pakiet zawiera skro¶ny gcc pozwalaj±cy na robienie na innych
-maszynach binariów do uruchamiania na SPARC (architektura
-"sparc-linux").
+maszynach binariów do uruchamiania na Linuksie SPARC.
 
 %prep
 %setup -q -n gcc-%{version}

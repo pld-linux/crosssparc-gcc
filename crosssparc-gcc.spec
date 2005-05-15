@@ -91,8 +91,8 @@ rm -rf $RPM_BUILD_ROOT
 rm -f $RPM_BUILD_ROOT%{_libdir}/libiberty.a
 
 %if 0%{!?debug:1}
-%{target}-strip -g $RPM_BUILD_ROOT%{gcclib}/libgcc.a
-%{target}-strip -g $RPM_BUILD_ROOT%{gcclib}/libgcov.a
+%{target}-strip -g -R.note -R.comment $RPM_BUILD_ROOT%{gcclib}/libgcc.a
+%{target}-strip -g -R.note -R.comment $RPM_BUILD_ROOT%{gcclib}/libgcov.a
 %endif
 
 %clean

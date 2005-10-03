@@ -5,15 +5,13 @@ Summary(pl):	Skro¶ne narzêdzia programistyczne GNU dla SPARC - gcc
 Summary(pt_BR):	Utilitários para desenvolvimento de binários da GNU - SPARC gcc
 Summary(tr):	GNU geliþtirme araçlarý - SPARC gcc
 Name:		crosssparc-gcc
-Version:	4.0.1
-%define		_snap	20050609
-Release:	0.%{_snap}.1
+Version:	4.0.2
+Release:	1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
-#Source0:	ftp://gcc.gnu.org/pub/gcc/releases/gcc-%{version}/gcc-%{version}.tar.bz2
-Source0:	ftp://gcc.gnu.org/pub/gcc/snapshots/4.0-%{_snap}/gcc-4.0-%{_snap}.tar.bz2
-# Source0-md5:	3ba660302e1c4c09c878dcab822c9e3c
+Source0:	ftp://gcc.gnu.org/pub/gcc/releases/gcc-%{version}/gcc-%{version}.tar.bz2
+# Source0-md5:	a659b8388cac9db2b13e056e574ceeb0
 URL:		http://gcc.gnu.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -59,8 +57,7 @@ This package adds C++ support to the GNU Compiler Collection for SPARC.
 Ten pakiet dodaje obs³ugê C++ do kompilatora gcc dla SPARC.
 
 %prep
-#setup -q -n gcc-%{version}
-%setup -q -n gcc-4.0-%{_snap}
+%setup -q -n gcc-%{version}
 
 %build
 cp -f /usr/share/automake/config.* .

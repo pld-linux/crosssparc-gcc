@@ -1,9 +1,9 @@
 Summary:	Cross SPARC GNU binary utility development utilities - gcc
-Summary(es.UTF-8):   Utilitarios para desarrollo de binarios de la GNU - SPARC gcc
-Summary(fr.UTF-8):   Utilitaires de développement binaire de GNU - SPARC gcc
-Summary(pl.UTF-8):   Skrośne narzędzia programistyczne GNU dla SPARC - gcc
-Summary(pt_BR.UTF-8):   Utilitários para desenvolvimento de binários da GNU - SPARC gcc
-Summary(tr.UTF-8):   GNU geliştirme araçları - SPARC gcc
+Summary(es.UTF-8):	Utilitarios para desarrollo de binarios de la GNU - SPARC gcc
+Summary(fr.UTF-8):	Utilitaires de développement binaire de GNU - SPARC gcc
+Summary(pl.UTF-8):	Skrośne narzędzia programistyczne GNU dla SPARC - gcc
+Summary(pt_BR.UTF-8):	Utilitários para desenvolvimento de binários da GNU - SPARC gcc
+Summary(tr.UTF-8):	GNU geliştirme araçları - SPARC gcc
 Name:		crosssparc-gcc
 Version:	4.0.2
 Release:	1
@@ -46,7 +46,7 @@ maszynach binariów do uruchamiania na Linuksie SPARC.
 
 %package c++
 Summary:	C++ support for crosssparc-gcc
-Summary(pl.UTF-8):   Obsługa C++ dla crosssparc-gcc
+Summary(pl.UTF-8):	Obsługa C++ dla crosssparc-gcc
 Group:		Development/Languages
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 

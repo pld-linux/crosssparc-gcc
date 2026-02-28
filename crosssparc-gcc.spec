@@ -6,7 +6,7 @@ Summary(pt_BR.UTF-8):	Utilitários para desenvolvimento de binários da GNU - SP
 Summary(tr.UTF-8):	GNU geliştirme araçları - SPARC gcc
 Name:		crosssparc-gcc
 Version:	4.0.2
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
